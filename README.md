@@ -2,16 +2,14 @@
 
 ## Attribution
 
-* Assignment Designed and Programmed by Jackson Goerner.
+* Assignment Designed and Programmed by Sai Ramishetty.
 * Multiple points of valuable feedback and checking provided by Lifi Huang.
 * Game Idea originated from [Chicory: A Colorful Tale](https://chicorygame.com/).
 
 ## Group Members
 
-- Jackson Goerner (jackson.goerner@monash.edu)
-- Saksham Nagpal (saksham.nagpal@monash.edu)
-- Alexey Ignatiev (alexey.ignatiev@monash.edu)
-- Brendon Taylor (brendon.taylor@monash.edu)
+- Sai Ranishetty (sram0056@monash.edu)
+
 
 ## Setup
 
