@@ -12,7 +12,7 @@
 - Saksham Nagpal (saksham.nagpal@monash.edu)
 - Alexey Ignatiev (alexey.ignatiev@monash.edu)
 - Brendon Taylor (brendon.taylor@monash.edu)
-
+- Vincent Law Yun Kaw (vlaw0003@student.monash.edu)
 ## Setup
 
 ```bash
