@@ -1,5 +1,6 @@
 from __future__ import annotations
 from array_sorted_list import ArraySortedList
+from layer_store import SetLayerStore
 
 class Grid:
     DRAW_STYLE_SET = "SET"
@@ -30,7 +31,23 @@ class Grid:
         self.width = x
         self.height = y
         self.brush_size = self.DEFAULT_BRUSH_SIZE
-        self.grid = [[ArraySortedList(1) for _ in range(y)] for _ in range(x)]
+        self.grid = [[None for _ in range(y)] for _ in range(x)]
+        self.layer_store = SetLayerStore()
+
+        # set layer_store for each grid square based on the draw_style
+        if self.draw_style == self.DRAW_STYLE_SET:
+            for i in range(x):
+                for j in range(y):
+                    self.grid[i][j] = self.layer_store
+        elif self.draw_style == self.DRAW_STYLE_ADD:
+            for i in range(x):
+                for j in range(y):
+                    self.grid[i][j] = ArraySortedList(1)
+        elif self.draw_style == self.DRAW_STYLE_SEQUENCE:
+            for i in range(x):
+                for j in range(y):
+                    self.grid[i][j] = ArraySortedList()
+
 
     def increase_brush_size(self):
         """
