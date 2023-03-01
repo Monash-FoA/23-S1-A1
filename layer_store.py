@@ -45,7 +45,7 @@ class SetLayerStore(LayerStore):
     - special: Invert the colour output.
     """
 
-    pass
+    raise NotImplementedError
 
 class AdditiveLayerStore(LayerStore):
     """
