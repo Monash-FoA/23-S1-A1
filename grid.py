@@ -1,5 +1,5 @@
 from __future__ import annotations
-from array_sorted_list import ArraySortedList
+from data_structures.array_sorted_list import ArraySortedList
 from layer_store import SetLayerStore
 
 class Grid:
