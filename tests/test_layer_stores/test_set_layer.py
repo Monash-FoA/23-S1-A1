@@ -20,7 +20,6 @@ class TestSetLayer(unittest.TestCase):
     def test_layers(self):
         s = SetLayerStore()
         s.add(black)
-        print(s.layers.peek())
         self.assertEqual(s.get_color((20, 20, 20), 40, 0, 0), (0, 0, 0))
         # This should set it to light the background, not black.
         s.add(lighten)
