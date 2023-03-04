@@ -1,6 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from layer_util import Layer
+from data_structures.stack_adt import ArrayStack, Stack
 
 class LayerStore(ABC):
 
@@ -45,7 +46,51 @@ class SetLayerStore(LayerStore):
     - special: Invert the colour output.
     """
 
-    pass
+    def __init__(self):
+        self.layer = None
+        self.special_mode = False
+
+    def add(self, layer: Layer) -> bool:
+        """
+        Add a layer to the store.
+        Returns true if the LayerStore was actually changed.
+        """
+        if self.layer != layer:
+            self.layer = layer
+            return True
+        return False
+
+    def get_color(self, start, timestamp, x, y) -> tuple[int, int, int]:
+        """
+        Returns the colour this square should show, given the current layers.
+        """
+        if self.layer is not None:
+            color = self.layer.apply(start, timestamp, x, y)
+            if self.special_mode:
+                color = tuple(255 - c for c in color)
+            return color
+        return start
+
+    def erase(self, layer: Layer) -> bool:
+        """
+        Complete the erase action with this layer
+        Returns true if the LayerStore was actually changed.
+        """
+        changed = False
+        layers_to_remove = []
+        for l in self.layer_set:
+            if l.index == layer.index:
+                layers_to_remove.append(l)
+        for l in layers_to_remove:
+            self.layer_set.remove(l)
+            changed = True
+        return changed
+
+    def special(self):
+        """
+        Special mode. Different for each store implementation.
+        """
+        self.special_mode = not self.special_mode
 
 class AdditiveLayerStore(LayerStore):
     """
