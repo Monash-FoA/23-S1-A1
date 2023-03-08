@@ -302,7 +302,18 @@ class MyWindow(arcade.Window):
         px: x position of the brush.
         py: y position of the brush.
         """
-        pass
+        paint_x = (px-1, px, px+1)
+        paint_y = (py-1, py+1)
+
+        for i in paint_x:
+            if i >= 0 and i < 32:
+                self.try_draw(i, py)
+
+        for j in paint_y:
+            if j >= 0 and j < 32:
+               self.try_draw(px, j)
+
+
 
     def on_undo(self):
         """Called when an undo is requested."""

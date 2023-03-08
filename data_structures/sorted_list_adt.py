@@ -79,4 +79,10 @@ class SortedList(ABC, Generic[T]):
     @abstractmethod
     def add(self, item: ListItem) -> None:
         """ Add new element to the list. """
+
+
+
+
         pass
+
+

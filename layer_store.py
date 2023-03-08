@@ -1,10 +1,14 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from layer_util import Layer
+import layers
+
 
 class LayerStore(ABC):
 
-    def __init__(self) -> None:
+    def __init__(self, x, y) -> None:
+        self.x = x
+        self.y = y
         pass
 
     @abstractmethod
@@ -20,6 +24,7 @@ class LayerStore(ABC):
         """
         Returns the colour this square should show, given the current layers.
         """
+
         pass
 
     @abstractmethod
@@ -28,6 +33,7 @@ class LayerStore(ABC):
         Complete the erase action with this layer
         Returns true if the LayerStore was actually changed.
         """
+
         pass
 
     @abstractmethod
@@ -38,6 +44,7 @@ class LayerStore(ABC):
         pass
 
 class SetLayerStore(LayerStore):
+
     """
     Set layer store. A single layer can be stored at a time (or nothing at all)
     - add: Set the single layer.
@@ -45,7 +52,21 @@ class SetLayerStore(LayerStore):
     - special: Invert the colour output.
     """
 
-    pass
+
+    def add(self, layer: Layer) -> Layer:
+        return layer
+
+
+    def erase(self) -> None:
+        return None
+
+    def special(self, layer: Layer) -> tuple[int, int, int]:
+        return
+
+    def get_color(self, start, timestamp, x, y) -> tuple[int, int, int]:
+        return [45,34,53]
+
+
 
 class AdditiveLayerStore(LayerStore):
     """
